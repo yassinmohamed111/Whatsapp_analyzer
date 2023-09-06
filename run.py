@@ -40,7 +40,7 @@ def switch(chat_data_file , csvname) :
 
 chats = pd.read('addhere the csv file')
 
-#hadahid = pd.read_csv("stats.csv")
+
 
 #pd.set_option("display.max_colwidth" , None)
 
@@ -170,18 +170,6 @@ def getpieofSearched():
     plt.show()
 
 
-'''
-#pie chart of howmuch percentage of all messages sent by each user
-def piechartOFmessagescount() :
-    prop = hadahid["MessageCount"] / hadahid["MessageCount"].sum() 
-    labels = hadahid["Name"]
-    plt.pie(prop, labels=labels, autopct='%1.1f%%', startangle=140)
-    plt.title("pie chart of number of messages sent in the group")
-    #plt.legend(labels, loc="best")
-    plt.axis('equal')  
-    plt.show()
-        
-'''
 
 
 def piechartData():
