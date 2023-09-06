@@ -7,38 +7,40 @@ from arabic_reshaper import arabic_reshaper
 import matplotlib.pyplot as plt
 
 
+#exttract your whatsapp groupchat data
+#run switch() and pass to it the path of the data and the name of the new csv file
+def switch(chat_data_file , csvname) :
 
+    with open(chat_data_file, "r", encoding="utf-8") as file:
+        chat_list = []
 
-'''
-#switching the chats from text to csv
+        for line in file:
+            parts = line.strip().split(" - ")
+            if len(parts) >= 2:
+                date_time = parts[0].strip()
+                name_message = parts[1].split(": ")
+                if len(name_message) >= 2:
+                    name = name_message[0].strip()
+                    message = name_message[1].strip()
+                    chat_list.append([date_time, name, message])
 
-chat_data_file = "WhatsApp Chat with Shabab is.txt"
+        df = pd.DataFrame(chat_list, columns=['Date/Time', 'Name', 'Message'])
 
-
-with open(chat_data_file, "r", encoding="utf-8") as file:
-    chat_list = []
-
-    for line in file:
-        parts = line.strip().split(" - ")
-        if len(parts) >= 2:
-            date_time = parts[0].strip()
-            name_message = parts[1].split(": ")
-            if len(name_message) >= 2:
-                name = name_message[0].strip()
-                message = name_message[1].strip()
-                chat_list.append([date_time, name, message])
-
-    df = pd.DataFrame(chat_list, columns=['Date/Time', 'Name', 'Message'])
-
-chats_shabab_is = df.to_csv("shabab_is.csv" , index = False)
-'''
+    chats = df.to_csv(f"{csvname}.csv" , index = False)
+    
+    return chats
 
 
 
-chats = pd.read_csv("hadahid.csv")
+#if first time using add your char text file and use switch()
+#switch takes ex. :  switch('chat_file_path' , 'name_of_new_csv')
+#newchat = pd.read_csv("name_of-new_csv.csv")s
+#
 
-shabab = pd.read_csv("stats_shabab_is.csv" )
-hadahid = pd.read_csv("stats.csv")
+
+chats = pd.read('addhere the csv file')
+
+#hadahid = pd.read_csv("stats.csv")
 
 #pd.set_option("display.max_colwidth" , None)
 
@@ -46,22 +48,12 @@ hadahid = pd.read_csv("stats.csv")
 
 def nameSwitch():
    
-    name_mapping = {
-        "shoeb": "Shosho",
-        "bobos": "Bobos",
-        "shouman": "rozblabann",
-        "saad": "Dolly",
-        "saied": "Tom",
-        "tee7a": "Tee7a",
-        "yassin": "Yassin"
-    }
-    person = input("Please enter your name (bobos/saied/tee7a/shouman/yassin/shoeb): ")
+    user_names = chats["Name"].drop_duplicates()
+    print(user_names)
+    person = input("Please enter name from the above list: ")
+    return person
 
-    if person in name_mapping:
-        converted_name = name_mapping[person]
-        return converted_name
-    else:
-        print("Error: Invalid name entered")
+    
 
 
 #get count of messages of everyone
@@ -75,7 +67,11 @@ def getMessageCount():
    return person
     
 
+
+
+
 #save count of messages 
+#dont run or use
 def save():
     person = getMessageCount()
     count = pd.value_counts(person["Message"]).sum()
@@ -146,6 +142,8 @@ def getMessagesOfperson(number) :
      return personschat
 
 
+getMessagesOfperson(2)
+
 #get a specific messages sent from specific users
 def specific_users_message(number) :
      person = getMessagesOfperson(number)
@@ -172,7 +170,7 @@ def getpieofSearched():
     plt.show()
 
 
-
+'''
 #pie chart of howmuch percentage of all messages sent by each user
 def piechartOFmessagescount() :
     prop = hadahid["MessageCount"] / hadahid["MessageCount"].sum() 
@@ -183,6 +181,8 @@ def piechartOFmessagescount() :
     plt.axis('equal')  
     plt.show()
         
+'''
+
 
 def piechartData():
      messages = searchByDate()
@@ -202,6 +202,7 @@ def piechartData():
 
 
 getpieofSearched()
+
 
 
 
