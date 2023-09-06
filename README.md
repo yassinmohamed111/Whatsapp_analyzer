@@ -11,3 +11,12 @@
 <h3>8-visulization  of Percentage of people who sent messages in a specific date</h3>
 
 
+<h2>How to use ? :  </h2>
+<h3>1-First export Groupchat from whatsapp</h3> 
+<h3>2-use switch()function , pass to it the downloaded textfile path and the name you want the csv file to be save example: switch("all_chat.txt","mygroup")</h3>
+<h3>3-read the new csv file and put it in a new dataframe -> chats = pd.read_csv("mygroup.csv)</h3>
+<h3>4- call the functions you want :) </h3>
+<h3>ps.: some functions needs to pass number of iterrations </h3>
+<h2>have fun :D</h2>
+
+
