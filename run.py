@@ -161,13 +161,17 @@ def getpieofSearched():
     messages = searchByMessage()
 
     alll = pd.value_counts(messages[0]["Name"])
+    print(alll)
     prop = (alll / alll.sum()) * 100
     labels = alll.index  #chatgpt helped me in this line
     
     plt.pie(prop, labels=labels, autopct='%1.1f%%', startangle=140)
     plt.title(f"Pie chart of message : {messages[1]} , the count of message : {messages[2]}")
+    custom_labels = [f'{label}: {count} {messages[1]} was sent' for label, count in zip(labels, alll)]
+    plt.legend(custom_labels ,  loc = "right" )
     plt.axis('equal')
     plt.show()
+
 
 
 
