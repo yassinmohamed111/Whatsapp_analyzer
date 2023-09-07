@@ -142,7 +142,6 @@ def getMessagesOfperson(number) :
      return personschat
 
 
-getMessagesOfperson(2)
 
 #get a specific messages sent from specific users
 def specific_users_message(number) :
@@ -156,7 +155,9 @@ def specific_users_message(number) :
      return mesgret
 
 
-#pie chart of the percantge count of message sent by each user
+
+      
+#get pie chart and count of specific message and the prop to all messages
 def getpieofSearched():
     messages = searchByMessage()
 
@@ -164,53 +165,44 @@ def getpieofSearched():
     print(alll)
     prop = (alll / alll.sum()) * 100
     labels = alll.index  #chatgpt helped me in this line
-    
+    allcount = pd.value_counts(chats["Message"]).sum()
+    props = (messages[2]/allcount)*100
+    rounded_number = format(props , ".2f")
     plt.pie(prop, labels=labels, autopct='%1.1f%%', startangle=140)
-    plt.title(f"Pie chart of message : {messages[1]} , the count of message : {messages[2]}")
+    plt.title(f" ({messages[1]}) was sent ({messages[2]} times) and the prop is ({rounded_number}%) of all messages")
     custom_labels = [f'{label}: {count} {messages[1]} was sent' for label, count in zip(labels, alll)]
     plt.legend(custom_labels ,  loc = "right" )
     plt.axis('equal')
     plt.show()
 
-
-
-
-
-def piechartData():
+#get the pie chart and count of messages in a specific date
+def piechartDate():
      messages = searchByDate()
      alll = pd.value_counts(messages[0]["Name"])
      prop = (alll / alll.sum()) * 100
      labels = alll.index
      plt.pie(prop, labels=labels, autopct='%1.1f%%', startangle=140)
-     plt.title(f"Pie chart of messages count in this date : {messages[1]}")
+     allcount = pd.value_counts(chats["Message"]).sum()
+     props = (messages[2]/allcount)*100
+     rounded_number = format(props , ".2f")
+     plt.title(f"in the date ({messages[1]}) the count of messages were sent is ({messages[2]}) and the prop is ({rounded_number}%)  of all messages")
+     custom_labels = [f'{label}: {count} messages were sent' for label, count in zip(labels, alll)]
+     plt.legend(custom_labels ,  loc = "lower left" )
      plt.axis('equal')
      plt.show()
 
-#getpieofSearched()
-#getpieofSearched()
-#piechartData()
 
-#getpieofSearched()
-
-
-
-
-
-
-'''
-
- name_mapping = {
-        "shoeb": "Shosho",
-        "bobos": "Bobos",
-        "shouman": "rozblabann",
-        "saad": "Dolly",
-        "saied": "Tom",
-        "tee7a": "Tee7a",
-        "yassin": "Yassin"
-    }
+#save links only in a csv
+def getlinks() :
+     links = chats[chats['Message'].astype(str).str.contains("https", case=False, na=False)]
+     links.to_csv("linksOnly.csv" , index=False)
 
 
 
 
 
-    '''
+
+
+
+
+
