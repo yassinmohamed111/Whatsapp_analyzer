@@ -20,7 +20,7 @@
 <h4 style="color: red;">ps.: some functions needs to pass number of iterrations </h3>
 
 
-<h2>Screenshot on my groupchat Data :  </h2>
+<h2>Screenshots of my groupchat Data :  </h2>
 <h4>total number of messages sent of each user :</h4>
 
 ![total](https://github.com/yassinmohamed111/Whatsapp_analyzer/assets/108435195/f255edf9-cda7-4a4c-9413-6308b44aa3ee)
