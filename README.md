@@ -1,5 +1,18 @@
 <h1> 
 📱 What'sapp analyzer </h1>
+
+
+<h2> Power BI visualizations of my Groupchat data📈 :</h2>
+
+
+https://github.com/yassinmohamed111/Whatsapp_analyzer/assets/108435195/87d8cec3-7d5d-4947-930d-87ec2c42628e
+
+
+
+
+
+
+
 <h2>it's a analysis tool that show you: </h2>
 
 <h4>1-✉️number of messages u and your friens have sent</h3> 
@@ -11,6 +24,8 @@
 <h4>6-📈visulization of Percentage of people who sent messages</h3>
 <h4>7-📈visulization of Percentage of people who sent a specific message</h3>
 <h4>8-📈visulization  of Percentage of people who sent messages in a specific date</h3>
+
+
 
 
 <h2>📌How to use ? :  </h2>
